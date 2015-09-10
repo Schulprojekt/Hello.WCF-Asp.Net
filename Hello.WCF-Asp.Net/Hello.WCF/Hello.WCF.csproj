@@ -61,14 +61,14 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Service1.svc" />
+    <Content Include="MessengerService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Service1.svc.cs">
-      <DependentUpon>Service1.svc</DependentUpon>
+    <Compile Include="MessengerService.svc.cs">
+      <DependentUpon>MessengerService.svc</DependentUpon>
     </Compile>
-    <Compile Include="IService1.cs" />
+    <Compile Include="IMessengerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -81,6 +81,16 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Hello.WCF.BuisnessLogic\Hello.WCF.BuisnessLogic.csproj">
+      <Project>{d7ba3bf8-2a70-4def-8812-7c306bcd4ad2}</Project>
+      <Name>Hello.WCF.BuisnessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hello.WCF.Dataobjects\Hello.WCF.Dataobjects.csproj">
+      <Project>{b5b253ef-b9bf-42d7-aee6-fea326bbfc6b}</Project>
+      <Name>Hello.WCF.Dataobjects</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
