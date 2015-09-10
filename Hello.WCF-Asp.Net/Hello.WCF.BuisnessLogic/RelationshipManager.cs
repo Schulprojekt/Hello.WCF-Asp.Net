@@ -10,7 +10,7 @@ namespace Hello.WCF.BuisnessLogic
     {
         public static void CreateRelationship(Relationship relationship)
         {
-            using (SqlTransaction transaction = new SqlConnection("").BeginTransaction())
+            using (SqlTransaction transaction = ConnectionManager.GetOpenConnection().BeginTransaction())
             {
                 RelationshipDal relationDal = new RelationshipDal();
                 relationDal.CreateRelationship(relationship, transaction);
@@ -20,7 +20,7 @@ namespace Hello.WCF.BuisnessLogic
 
         public static List<Relationship> GetRelationships(Guid userId)
         {
-            using (SqlTransaction transaction = new SqlConnection("").BeginTransaction())
+            using (SqlTransaction transaction = ConnectionManager.GetOpenConnection().BeginTransaction())
             {
                 RelationshipDal relationDal = new RelationshipDal();
                 List<Relationship> relationshipList = RelationshipDal.GetRelationship(userId, transaction);
@@ -30,7 +30,7 @@ namespace Hello.WCF.BuisnessLogic
 
         public static void DeleteRelationship(Relationship relationship)
         {
-            using (SqlTransaction transaction = new SqlConnection("").BeginTransaction())
+            using (SqlTransaction transaction = ConnectionManager.GetOpenConnection().BeginTransaction())
             {
                 RelationshipDal relationDal = new RelationshipDal();
                 relationDal.DeleteRelation(relationship);

@@ -9,7 +9,7 @@ namespace Hello.WCF.BuisnessLogic
     {
         public static void CreateUser(User user)
         {
-            using (SqlTransaction transaction = new SqlConnection("").BeginTransaction())
+            using (SqlTransaction transaction = ConnectionManager.GetOpenConnection().BeginTransaction())
             {
                 UserDal userDal = new UserDal();
                 userDal.CreateUser(user);
@@ -19,7 +19,7 @@ namespace Hello.WCF.BuisnessLogic
 
         public static User GetUserByUserId(Guid friendsId)
         {
-            using (SqlTransaction transaction = new SqlConnection("").BeginTransaction())
+            using (SqlTransaction transaction = ConnectionManager.GetOpenConnection().BeginTransaction())
             {
                 UserDal userDal = new UserDal();
                 User user = userDal.GetUserByUserId(friendsId);
@@ -29,7 +29,7 @@ namespace Hello.WCF.BuisnessLogic
 
         public static User GetUserByAccountName(string accountName)
         {
-            using (SqlTransaction transaction = new SqlConnection("").BeginTransaction())
+            using (SqlTransaction transaction = ConnectionManager.GetOpenConnection().BeginTransaction())
             {
                 UserDal userDal = new UserDal();
                 User user = userDal.GetUserByAccountName(accountName);
@@ -39,7 +39,7 @@ namespace Hello.WCF.BuisnessLogic
 
         public static User UpdateUser(User user)
         {
-            using (SqlTransaction transaction = new SqlConnection("").BeginTransaction())
+            using (SqlTransaction transaction = ConnectionManager.GetOpenConnection().BeginTransaction())
             {
                 UserDal userDal = new UserDal();
                 User useredit = userDal.UpdateUser(user);
@@ -50,7 +50,7 @@ namespace Hello.WCF.BuisnessLogic
 
         public static void DeleteUser(User user)
         {
-            using (SqlTransaction transaction = new SqlConnection("").BeginTransaction())
+            using (SqlTransaction transaction = ConnectionManager.GetOpenConnection().BeginTransaction())
             {
                 UserDal userDal = new UserDal();
                 userDal.DeleteUser(user);
