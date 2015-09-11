@@ -33,7 +33,7 @@ namespace Hello.WCF.BuisnessLogic
             using (SqlTransaction transaction = ConnectionManager.GetOpenConnection().BeginTransaction())
             {
                 RelationshipDal relationDal = new RelationshipDal();
-                relationDal.DeleteRelation(relationship);
+                relationDal.DeleteRelation(relationship, transaction);
                 transaction.Commit();
             }
         }

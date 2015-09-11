@@ -12,7 +12,7 @@ namespace Hello.WCF.BuisnessLogic
             using (SqlTransaction transaction = ConnectionManager.GetOpenConnection().BeginTransaction())
             {
                 UserDal userDal = new UserDal();
-                userDal.CreateUser(user);
+                userDal.CreateUser(user, transaction);
                 transaction.Commit();
             }
         }
@@ -22,7 +22,7 @@ namespace Hello.WCF.BuisnessLogic
             using (SqlTransaction transaction = ConnectionManager.GetOpenConnection().BeginTransaction())
             {
                 UserDal userDal = new UserDal();
-                User user = userDal.GetUserByUserId(friendsId);
+                User user = userDal.GetUserByUserId(friendsId, transaction);
                 return user;
             }
         }
@@ -32,7 +32,7 @@ namespace Hello.WCF.BuisnessLogic
             using (SqlTransaction transaction = ConnectionManager.GetOpenConnection().BeginTransaction())
             {
                 UserDal userDal = new UserDal();
-                User user = userDal.GetUserByAccountName(accountName);
+                User user = userDal.GetUserByAccountName(accountName, transaction);
                 return user;
             }
         }
@@ -42,7 +42,7 @@ namespace Hello.WCF.BuisnessLogic
             using (SqlTransaction transaction = ConnectionManager.GetOpenConnection().BeginTransaction())
             {
                 UserDal userDal = new UserDal();
-                User useredit = userDal.UpdateUser(user);
+                User useredit = userDal.UpdateUser(user, transaction);
                 transaction.Commit();
                 return useredit;
             }
@@ -53,7 +53,7 @@ namespace Hello.WCF.BuisnessLogic
             using (SqlTransaction transaction = ConnectionManager.GetOpenConnection().BeginTransaction())
             {
                 UserDal userDal = new UserDal();
-                userDal.DeleteUser(user);
+                userDal.DeleteUser(user, transaction);
                 transaction.Commit();
             }
         }

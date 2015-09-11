@@ -10,17 +10,17 @@ namespace Hello.WCF.DataAccess
 {
     public class MessageDal
     {
-        public List<Message> ReadMessage(SqlTransaction transaction)
+        public List<Message> ReadMessage(Guid userId, SqlTransaction transaction)
+        {
+            return null;
+        }
+
+        public void CreateMessage(Message message, SqlTransaction transaction)
         {
 
         }
 
-        public void CreateMessage(Message message)
-        {
-
-        }
-
-        public void MessageReaded(int messageId)
+        public void MessageReaded(int messageId, SqlTransaction transaction)
         {
 
         }

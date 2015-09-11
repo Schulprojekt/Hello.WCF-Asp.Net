@@ -26,14 +26,9 @@ namespace Hello.WCF
         #endregion
 
         #region ReadMethods
-        //public IList<User> GetAllUsers()
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        public IList<User> GetRelationship(Guid userId)
+        public IList<User> GetRelationship(string userId)
         {
-            List<Relationship> relationshipList = RelationshipManager.GetRelationships(userId);
+            List<Relationship> relationshipList = RelationshipManager.GetRelationships(new Guid(userId));
             List<User> friends = new List<User>();
             foreach (Relationship friendId in relationshipList)
             {
@@ -44,9 +39,9 @@ namespace Hello.WCF
             return friends;
         }
 
-        public IList<Message> GetMessages(Guid userId)
+        public IList<Message> GetMessages(string userId)
         {
-            List<Message> messageList = MessageManager.ReadMessage();
+            List<Message> messageList = MessageManager.ReadMessage(new Guid(userId));
             foreach (Message msg in messageList)
             {
                 MessageManager.MessageReaded(msg.Id);

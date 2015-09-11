@@ -20,7 +20,7 @@ namespace Hello.WCF.DataAccess
             throw new NotImplementedException();
         }
 
-        public void DeleteRelation(Relationship relationship)
+        public void DeleteRelation(Relationship relationship, SqlTransaction transaction)
         {
             throw new NotImplementedException();
         }

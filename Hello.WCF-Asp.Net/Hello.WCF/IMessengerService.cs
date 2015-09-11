@@ -32,7 +32,7 @@ namespace Hello.WCF
         [OperationContract]
         [WebInvoke(
             Method = "Post",
-            UriTemplate = "CreateMessage",
+            UriTemplate = "CreateRelationship",
             BodyStyle = WebMessageBodyStyle.WrappedRequest,
             ResponseFormat = WebMessageFormat.Json,
             RequestFormat = WebMessageFormat.Json)]
@@ -42,31 +42,23 @@ namespace Hello.WCF
         #region ReadMethods
         [OperationContract]
         [WebGet(
-            UriTemplate = "GetRelationship",
+            UriTemplate = "GetRelationship/{userId}",
             BodyStyle = WebMessageBodyStyle.WrappedRequest,
             ResponseFormat = WebMessageFormat.Json,
             RequestFormat = WebMessageFormat.Json)]
-        IList<User> GetRelationship(Guid userId);
+        IList<User> GetRelationship(string userId);
 
         [OperationContract]
         [WebGet(
-            UriTemplate = "GetMessages",
+            UriTemplate = "GetMessages/{userId}",
             BodyStyle = WebMessageBodyStyle.WrappedRequest,
             ResponseFormat = WebMessageFormat.Json,
             RequestFormat = WebMessageFormat.Json)]
-        IList<Message> GetMessages(Guid userId);
-
-        //[OperationContract]
-        //[WebGet(
-        //    UriTemplate = "GetAllUsers",
-        //    BodyStyle = WebMessageBodyStyle.WrappedRequest,
-        //    ResponseFormat = WebMessageFormat.Json,
-        //    RequestFormat = WebMessageFormat.Json)]
-        //IList<User> GetAllUsers();
+        IList<Message> GetMessages(string userId);
 
         [OperationContract]
         [WebGet(
-            UriTemplate = "GetUserByAccountName",
+            UriTemplate = "GetUserByAccountName/{AccountName}",
             BodyStyle = WebMessageBodyStyle.WrappedRequest,
             ResponseFormat = WebMessageFormat.Json,
             RequestFormat = WebMessageFormat.Json)]
