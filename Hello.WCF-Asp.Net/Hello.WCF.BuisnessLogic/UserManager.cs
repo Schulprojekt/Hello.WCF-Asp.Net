@@ -17,7 +17,7 @@ namespace Hello.WCF.BuisnessLogic
             }
         }
 
-        public static User GetUserByUserId(Guid friendsId)
+        public static User GetUserByUserId(Guid? friendsId)
         {
             using (SqlTransaction transaction = ConnectionManager.GetOpenConnection().BeginTransaction())
             {

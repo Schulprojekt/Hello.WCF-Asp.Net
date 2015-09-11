@@ -7,21 +7,21 @@ namespace Hello.WCF.Dataobjects
     public class Message
     {
         [DataMember(Name = "id")]
-        public int Id
+        public int? Id
         {
             get;
             set;
         }
 
         [DataMember(Name = "sender")]
-        public Guid Sender
+        public Guid? Sender
         {
             get;
             set;
         }
 
         [DataMember(Name = "receiver")]
-        public Guid Receiver
+        public Guid? Receiver
         {
             get;
             set;
@@ -42,7 +42,7 @@ namespace Hello.WCF.Dataobjects
         }
 
         [DataMember(Name = "timestamp")]
-        public DateTime TimeStamp
+        public DateTime? TimeStamp
         {
             get;
             set;

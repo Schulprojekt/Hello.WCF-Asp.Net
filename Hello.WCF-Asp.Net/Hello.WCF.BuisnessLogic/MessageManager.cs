@@ -29,7 +29,7 @@ namespace Hello.WCF.BuisnessLogic
             }
         }
 
-        public static void MessageReaded(int messageId)
+        public static void MessageReaded(int? messageId)
         {
             using (SqlTransaction transaction = ConnectionManager.GetOpenConnection().BeginTransaction())
             {

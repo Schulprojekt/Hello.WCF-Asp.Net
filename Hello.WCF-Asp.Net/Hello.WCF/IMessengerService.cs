@@ -7,7 +7,7 @@ using Hello.WCF.Dataobjects;
 namespace Hello.WCF
 {
     // HINWEIS: Mit dem Befehl "Umbenennen" im Menü "Umgestalten" können Sie den Schnittstellennamen "IMessengerService" sowohl im Code als auch in der Konfigurationsdatei ändern.
-    [ServiceContract(Namespace="")]
+    [ServiceContract]//(Namespace="")]
     public interface IMessengerService
     {
         #region CreateMethods
@@ -65,7 +65,7 @@ namespace Hello.WCF
         User GetUserByAccountName(string AccountName);
         #endregion
 
-        #region UpdateMethods
+        #region UpdateMethod
         [OperationContract]
         [WebInvoke(
            Method = "Put",

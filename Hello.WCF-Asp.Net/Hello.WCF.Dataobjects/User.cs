@@ -7,7 +7,7 @@ namespace Hello.WCF.Dataobjects
     public class User
     {
         [DataMember(Name = "userId")]
-        public Guid UserID
+        public Guid? UserID
         {
             set;
             get;
@@ -35,7 +35,7 @@ namespace Hello.WCF.Dataobjects
         }
 
         [DataMember(Name = "expierencePoints")]
-        public int ExpierencePoints
+        public int? ExpierencePoints
         {
             get;
             set;
@@ -43,6 +43,12 @@ namespace Hello.WCF.Dataobjects
 
         [DataMember(Name = "picture")]
         public byte[] Picture
+        {
+            get;
+            set;
+        }
+        [DataMember(Name ="password")]
+        public byte[] Password
         {
             get;
             set;
