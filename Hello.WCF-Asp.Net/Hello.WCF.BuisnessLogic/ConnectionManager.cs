@@ -12,7 +12,7 @@ namespace Hello.WCF.BuisnessLogic
         /// </summary>
         public static void ConnectionOpen()
         {    // Setzen des Connectionstrings
-            string connectionString = @"";
+            string connectionString = @"Server=HELLO-SERVER;Database=Hello;User Id=HelloTestUser;Password=HelloTest2015;";
             // Zuweisung des Connstring zur SqlConnection Objekt
             conn = new SqlConnection(connectionString);
             //Öffnen der Connection
