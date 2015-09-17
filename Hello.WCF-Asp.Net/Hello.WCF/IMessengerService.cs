@@ -124,7 +124,7 @@ namespace Hello.WCF
         [OperationContract]
         [WebInvoke(
            Method = "Put",
-           UriTemplate = "UpdateUser",
+           UriTemplate = "UpdateUser/{user}",
            BodyStyle = WebMessageBodyStyle.WrappedRequest,
            ResponseFormat = WebMessageFormat.Json,
            RequestFormat = WebMessageFormat.Json)]
@@ -141,7 +141,7 @@ namespace Hello.WCF
         [OperationContract]
         [WebInvoke(
            Method = "Delete",
-           UriTemplate = "DeleteUser",
+           UriTemplate = "DeleteUser/{user}",
            BodyStyle = WebMessageBodyStyle.WrappedRequest,
            ResponseFormat = WebMessageFormat.Json,
            RequestFormat = WebMessageFormat.Json)]
@@ -156,7 +156,7 @@ namespace Hello.WCF
         [OperationContract]
         [WebInvoke(
            Method = "Delete",
-           UriTemplate = "DeleteRelationship",
+           UriTemplate = "DeleteRelationship/{relationship}",
            BodyStyle = WebMessageBodyStyle.WrappedRequest,
            ResponseFormat = WebMessageFormat.Json,
            RequestFormat = WebMessageFormat.Json)]
