@@ -2,6 +2,7 @@
 using Hello.WCF.Dataobjects;
 using Hello.WCF.DataAccess;
 using System.Data.SqlClient;
+using System.Collections.Generic;
 
 namespace Hello.WCF.BuisnessLogic
 {
@@ -109,7 +110,13 @@ namespace Hello.WCF.BuisnessLogic
                 //Zugriffssicht auf díe Datenbank deklarieren und instanzieren
                 UserDal userDal = new UserDal();
                 //Aufruf der Benutzerlöschenmethode
+                List<Relationship> friendlist = RelationshipManager.GetRelationships(user.UserID.Value);
+                foreach (Relationship friend in friendlist)
+                {
+                    RelationshipManager.DeleteRelationship(friend);
+                }
                 userDal.DeleteUser(user, transaction);
+
                 //Transaktion speichern
                 transaction.Commit();
             }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Hello.WCF.Dataobjects;
 using Hello.WCF.BuisnessLogic;
+using System.ServiceModel.Web;
 
 namespace Hello.WCF
 {
