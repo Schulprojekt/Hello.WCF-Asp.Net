@@ -7,48 +7,48 @@ namespace Hello.WCF.Dataobjects
     public class User
     {
         [DataMember(Name = "userId")]
-        public Guid? UserID
+        public Guid? userID
         {
             set;
             get;
         }
 
         [DataMember(Name = "aliasName")]
-        public string AliasName
+        public string aliasName
         {
             get;
             set;
         }
 
         [DataMember(Name = "accountName")]
-        public string AccountName
+        public string accountName
         {
             get;
             set;
         }
 
         [DataMember(Name = "accountState")]
-        public string AccountState
+        public string accountState
         {
             get;
             set;
         }
 
         [DataMember(Name = "expierencePoints")]
-        public int? ExpierencePoints
+        public int? expierencePoints
         {
             get;
             set;
         }
 
         [DataMember(Name = "picture")]
-        public byte[] Picture
+        public byte[] picture
         {
             get;
             set;
         }
         [DataMember(Name ="password")]
-        public byte[] Password
+        public byte[] password
         {
             get;
             set;

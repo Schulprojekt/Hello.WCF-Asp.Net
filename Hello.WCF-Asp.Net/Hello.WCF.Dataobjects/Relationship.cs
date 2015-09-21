@@ -7,21 +7,21 @@ namespace Hello.WCF.Dataobjects
     public class Relationship
     {
         [DataMember(Name = "id")]
-        public int? Id
+        public int? id
         {
             get;
             set;
         }
 
         [DataMember(Name = "friendsId")]
-        public Guid? FriendsId
+        public Guid? friendsId
         {
             get;
             set;
         }
 
         [DataMember(Name = "userId")]
-        public Guid? UserId
+        public Guid? userId
         {
             get;
             set;

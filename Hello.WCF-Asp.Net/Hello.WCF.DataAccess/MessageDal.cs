@@ -34,10 +34,10 @@ namespace Hello.WCF.DataAccess
                 sqlcmd.CommandType = CommandType.StoredProcedure;
                 
                 //SQL-Parameter zum SQLkommando hinzufügen
-                sqlcmd.Parameters.Add("@Sender", SqlDbType.UniqueIdentifier).Value = message.Sender;
-                sqlcmd.Parameters.Add("@Receiver", SqlDbType.UniqueIdentifier).Value = message.Receiver;
-                sqlcmd.Parameters.Add("@Attchment", SqlDbType.VarBinary, message.Attchment.Length).Value = message.Attchment;
-                sqlcmd.Parameters.Add("@Message", SqlDbType.NVarChar, message.Messages.Length).Value = message.Messages;
+                sqlcmd.Parameters.Add("@sender", SqlDbType.UniqueIdentifier).Value = message.sender;
+                sqlcmd.Parameters.Add("@receiver", SqlDbType.UniqueIdentifier).Value = message.receiver;
+                sqlcmd.Parameters.Add("@attchment", SqlDbType.VarBinary, message.attchment.Length).Value = message.attchment;
+                sqlcmd.Parameters.Add("@Message", SqlDbType.NVarChar, message.messages.Length).Value = message.messages;
 
                 //Ausführen des SQLkommandos
                 byte[] result = (byte[])sqlcmd.ExecuteScalar();
@@ -66,7 +66,7 @@ namespace Hello.WCF.DataAccess
                 sqlcmd.CommandType = CommandType.StoredProcedure;
 
                 //SQL-Parameter zum SQLkommando hinzufügen
-                sqlcmd.Parameters.Add("@UserId", SqlDbType.UniqueIdentifier).Value = userId;
+                sqlcmd.Parameters.Add("@userId", SqlDbType.UniqueIdentifier).Value = userId;
 
                 // Ausführen des SQLkommandos und Speichern des Ergebnis in den Dataadapter
                 using (SqlDataAdapter dataApdater = new SqlDataAdapter(sqlcmd))
@@ -85,12 +85,12 @@ namespace Hello.WCF.DataAccess
                     {
                         //Bauen eines Nachrichtenobjekts
                         Message message = new Message();
-                        message.Id = dr["Id"] as int?;
-                        message.Sender = dr["Sender"] as Guid?;
-                        message.Receiver = dr["Receiver"] as Guid?;
-                        message.Messages = dr["Message"] as string;
-                        message.Attchment = dr["Attchment"] as byte[];
-                        message.TimeStamp = dr["Timestamp"] as DateTime?;
+                        message.id = dr["id"] as int?;
+                        message.sender = dr["sender"] as Guid?;
+                        message.receiver = dr["receiver"] as Guid?;
+                        message.messages = dr["Message"] as string;
+                        message.attchment = dr["attchment"] as byte[];
+                        message.timeStamp = dr["Timestamp"] as DateTime?;
 
                         // hinzufügen des Nachrichtenobjekts
                         messageList.Add(message);

@@ -34,8 +34,8 @@ namespace Hello.WCF.DataAccess
                 sqlcmd.CommandType = CommandType.StoredProcedure;
 
                 //SQL-Parameter zum SQLkommando hinzufügen
-                sqlcmd.Parameters.Add("@UserId", SqlDbType.UniqueIdentifier).Value = relationship.UserId;
-                sqlcmd.Parameters.Add("@FriendId", SqlDbType.UniqueIdentifier).Value = relationship.FriendsId;
+                sqlcmd.Parameters.Add("@userId", SqlDbType.UniqueIdentifier).Value = relationship.userId;
+                sqlcmd.Parameters.Add("@FriendId", SqlDbType.UniqueIdentifier).Value = relationship.friendsId;
 
                 //Ausführen des SQLkommandos
                 byte[] result = (byte[])sqlcmd.ExecuteScalar();
@@ -47,7 +47,7 @@ namespace Hello.WCF.DataAccess
         /// Holt alle Freundesbeziehung aus der DB
         /// </summary>
         /// <param name="userId">
-        /// Die UserId des angemeldeten Benutzers
+        /// Die userId des angemeldeten Benutzers
         /// </param>
         /// <param name="transaction">
         /// Sicherung der SQL-Interaktion
@@ -64,7 +64,7 @@ namespace Hello.WCF.DataAccess
                 sqlcmd.CommandType = CommandType.StoredProcedure;
 
                 //SQL-Parameter zum SQLkommando hinzufügen
-                sqlcmd.Parameters.Add("@UserId", SqlDbType.UniqueIdentifier).Value = userId;
+                sqlcmd.Parameters.Add("@userId", SqlDbType.UniqueIdentifier).Value = userId;
 
                 // Ausführen des SQLkommandos und Speichern des Ergebnis in den Dataadapter
                 using (SqlDataAdapter dataApdater = new SqlDataAdapter(sqlcmd))
@@ -83,9 +83,9 @@ namespace Hello.WCF.DataAccess
                     {
                         //Bauen eines Beziehungsobjekts
                         Relationship friend = new Relationship();
-                        friend.Id = dr["Id"] as int?;
-                        friend.UserId = dr["UserId"] as Guid?;
-                        friend.FriendsId = dr["FriendsId"] as Guid?;
+                        friend.id = dr["id"] as int?;
+                        friend.userId = dr["userId"] as Guid?;
+                        friend.friendsId = dr["friendsId"] as Guid?;
 
                         // hinzufügen des Beziehungsobjekts
                         friendsList.Add(friend);
@@ -115,8 +115,8 @@ namespace Hello.WCF.DataAccess
                 sqlcmd.CommandType = CommandType.StoredProcedure;
 
                 //SQL-Parameter zum SQLkommando hinzufügen
-                sqlcmd.Parameters.Add("@UserId", SqlDbType.UniqueIdentifier).Value = relationship.UserId;
-                sqlcmd.Parameters.Add("@FriendId", SqlDbType.UniqueIdentifier).Value = relationship.FriendsId;
+                sqlcmd.Parameters.Add("@userId", SqlDbType.UniqueIdentifier).Value = relationship.userId;
+                sqlcmd.Parameters.Add("@FriendId", SqlDbType.UniqueIdentifier).Value = relationship.friendsId;
 
                 //Ausführen des SQLkommandos
                 sqlcmd.ExecuteScalar();

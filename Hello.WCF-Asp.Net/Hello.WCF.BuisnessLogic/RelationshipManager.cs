@@ -31,7 +31,7 @@ namespace Hello.WCF.BuisnessLogic
         /// Holt alle Beziehungen aus der DB
         /// </summary>
         /// <param name="userId">
-        /// Die Id des angemeldeten Benutzers
+        /// Die id des angemeldeten Benutzers
         /// </param>
         /// <returns>
         /// Gibt eine Liste von Beziehung zwischen Benutzern und dem angenmeldeten Benuzter

@@ -32,7 +32,7 @@ namespace Hello.WCF.BuisnessLogic
         /// Holt die Nachrichten aus der Dal
         /// </summary>
         /// <param name="userId">
-        /// Id des angemledeten Benutzers
+        /// id des angemledeten Benutzers
         /// </param>
         /// <returns>
         /// Gibt eine Nachrichtenliste wieder
@@ -56,7 +56,7 @@ namespace Hello.WCF.BuisnessLogic
         /// Setzt die Nachrichten auf gelesen
         /// </summary>
         /// <param name="messageId">
-        /// Nachrichten-Id
+        /// Nachrichten-id
         /// </param>
         public static void MessageReaded(int? messageId)
         {

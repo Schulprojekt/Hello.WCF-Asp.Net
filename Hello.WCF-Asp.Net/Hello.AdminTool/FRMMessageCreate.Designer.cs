@@ -60,7 +60,7 @@
             this.lblSender.Name = "lblSender";
             this.lblSender.Size = new System.Drawing.Size(41, 13);
             this.lblSender.TabIndex = 2;
-            this.lblSender.Text = "Sender";
+            this.lblSender.Text = "sender";
             // 
             // lblReceiver
             // 

@@ -16,9 +16,9 @@ namespace Hello.AdminTool
         private void bntCreateUser_Click(object sender, EventArgs e)
         {
             User user = new User();
-            user.AccountName = txtAccountName.Text;
+            user.accountName = txtAccountName.Text;
             System.Text.ASCIIEncoding enc = new ASCIIEncoding();
-            user.Password = enc.GetBytes(txtPassword.Text);
+            user.password = enc.GetBytes(txtPassword.Text);
             UserManager.CreateUser(user);
             Close();
         }

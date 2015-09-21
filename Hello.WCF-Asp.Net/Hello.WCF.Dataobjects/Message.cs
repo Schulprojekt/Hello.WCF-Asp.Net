@@ -7,42 +7,42 @@ namespace Hello.WCF.Dataobjects
     public class Message
     {
         [DataMember(Name = "id")]
-        public int? Id
+        public int? id
         {
             get;
             set;
         }
 
         [DataMember(Name = "sender")]
-        public Guid? Sender
+        public Guid? sender
         {
             get;
             set;
         }
 
         [DataMember(Name = "receiver")]
-        public Guid? Receiver
+        public Guid? receiver
         {
             get;
             set;
         }
 
         [DataMember(Name = "message")]
-        public string Messages
+        public string messages
         {
             get;
             set;
         }
 
         [DataMember(Name = "attchment")]
-        public byte[] Attchment
+        public byte[] attchment
         {
             get;
             set;
         }
 
         [DataMember(Name = "timestamp")]
-        public DateTime? TimeStamp
+        public DateTime? timeStamp
         {
             get;
             set;

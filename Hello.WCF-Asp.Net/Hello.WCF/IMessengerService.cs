@@ -2,6 +2,7 @@
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using Hello.WCF.Dataobjects;
+using System;
 
 namespace Hello.WCF
 {
@@ -25,7 +26,7 @@ namespace Hello.WCF
              BodyStyle = WebMessageBodyStyle.WrappedRequest,
              ResponseFormat = WebMessageFormat.Json,
              RequestFormat = WebMessageFormat.Json)]
-        void CreateUser(User user);
+        void CreateUser(String user);
 
         /// <summary>
         /// Legt und Sendet die Nachrichten an die Datenbank an
@@ -40,7 +41,7 @@ namespace Hello.WCF
             BodyStyle = WebMessageBodyStyle.WrappedRequest,
             ResponseFormat = WebMessageFormat.Json,
             RequestFormat = WebMessageFormat.Json)]
-        void CreateMessage(Message message);
+        void CreateMessage(String message);
 
         /// <summary>
         /// Legt die Freunschaftsbeziehung in der Datenbank zwischen 2 Benutzern an 
@@ -55,7 +56,7 @@ namespace Hello.WCF
             BodyStyle = WebMessageBodyStyle.WrappedRequest,
             ResponseFormat = WebMessageFormat.Json,
             RequestFormat = WebMessageFormat.Json)]
-        void CreateRelationship(Relationship relationship);
+        void CreateRelationship(string relationship);
         #endregion
 
         #region ReadMethods
@@ -63,7 +64,7 @@ namespace Hello.WCF
         /// Gibt alle Freundschaftsbeziehungen des angelmeldeten Benutzers von der Datenbank wieder
         /// </summary>
         /// <param name="userId">
-        /// Die Id des angemeldten Benutzers
+        /// Die id des angemeldten Benutzers
         /// </param>
         /// <returns>
         /// Gibt eine Freundesliste wieder vom Typ Benutzer
@@ -74,13 +75,13 @@ namespace Hello.WCF
             BodyStyle = WebMessageBodyStyle.WrappedRequest,
             ResponseFormat = WebMessageFormat.Json,
             RequestFormat = WebMessageFormat.Json)]
-        IList<User> GetRelationship(string userId);
+       String GetRelationship(string userId);
 
         /// <summary>
         /// Holt die Nachrichten von der Datenbank für den angemeldten Benutzer
         /// </summary>
         /// <param name="userId">
-        /// Die Id des angemeldeten Benutzers
+        /// Die id des angemeldeten Benutzers
         /// </param>
         /// <returns>
         /// Eine Liste von Nachrichten
@@ -91,7 +92,7 @@ namespace Hello.WCF
             BodyStyle = WebMessageBodyStyle.WrappedRequest,
             ResponseFormat = WebMessageFormat.Json,
             RequestFormat = WebMessageFormat.Json)]
-        IList<Message> GetMessages(string userId);
+        String GetMessages(string userId);
 
         /// <summary>
         /// Holt die Userdaten zum angebenen Accountnamen aus der Datenbank
@@ -104,11 +105,11 @@ namespace Hello.WCF
         /// </returns>
         [OperationContract]
         [WebGet(
-            UriTemplate = "GetUserByAccountName/{AccountName}",
+            UriTemplate = "GetUserByAccountName/{accountName}",
             BodyStyle = WebMessageBodyStyle.WrappedRequest,
             ResponseFormat = WebMessageFormat.Json,
             RequestFormat = WebMessageFormat.Json)]
-        User GetUserByAccountName(string AccountName);
+        String GetUserByAccountName(string AccountName);
         #endregion
 
         #region UpdateMethod
@@ -128,7 +129,7 @@ namespace Hello.WCF
            BodyStyle = WebMessageBodyStyle.WrappedRequest,
            ResponseFormat = WebMessageFormat.Json,
            RequestFormat = WebMessageFormat.Json)]
-        User UpdateUser(User user);
+        String UpdateUser(string user);
         #endregion
 
         #region DeleteMethods
@@ -145,7 +146,7 @@ namespace Hello.WCF
            BodyStyle = WebMessageBodyStyle.WrappedRequest,
            ResponseFormat = WebMessageFormat.Json,
            RequestFormat = WebMessageFormat.Json)]
-        void DeleteUser(User user);
+        void DeleteUser(String user);
         
         /// <summary>
         /// Löscht die Freundschaftsbeziehung zwischen 2 Benutzern
@@ -160,7 +161,7 @@ namespace Hello.WCF
            BodyStyle = WebMessageBodyStyle.WrappedRequest,
            ResponseFormat = WebMessageFormat.Json,
            RequestFormat = WebMessageFormat.Json)]
-        void DeleteRelationship(Relationship relationship);
+        void DeleteRelationship(string relationship);
         #endregion
     }
 }

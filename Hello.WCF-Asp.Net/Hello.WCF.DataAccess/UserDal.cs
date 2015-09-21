@@ -36,9 +36,9 @@ namespace Hello.WCF.DataAccess
                 sqlcmd.CommandType = CommandType.StoredProcedure;
 
                 //SQL-Parameter zum SQLkommando hinzufügen
-                sqlcmd.Parameters.Add("@UserId", SqlDbType.UniqueIdentifier).Value = user.UserID;
-                sqlcmd.Parameters.Add("@Password", SqlDbType.Binary, user.Password.Length).Value = user.Password;
-                sqlcmd.Parameters.Add("@AccountName", SqlDbType.NVarChar, user.AccountName.Length).Value = user.AccountName;
+                sqlcmd.Parameters.Add("@userId", SqlDbType.UniqueIdentifier).Value = user.userID;
+                sqlcmd.Parameters.Add("@password", SqlDbType.Binary, user.password.Length).Value = user.password;
+                sqlcmd.Parameters.Add("@accountName", SqlDbType.NVarChar, user.accountName.Length).Value = user.accountName;
 
                 //Ausführen des SQLkommandos
                 byte[] result = (byte[])sqlcmd.ExecuteScalar();
@@ -47,7 +47,7 @@ namespace Hello.WCF.DataAccess
         }
 
         /// <summary>
-        /// Holt die Benutzer anhand der UserID aus der DB
+        /// Holt die Benutzer anhand der userID aus der DB
         /// </summary>
         /// <param name="friendsId">
         /// Die FriendId des befreundeten Benutzers
@@ -67,7 +67,7 @@ namespace Hello.WCF.DataAccess
                 sqlcmd.CommandType = CommandType.StoredProcedure;
 
                 //SQL-Parameter zum SQLkommando hinzufügen
-                sqlcmd.Parameters.Add("@UserId", SqlDbType.UniqueIdentifier).Value = friendsId;
+                sqlcmd.Parameters.Add("@userId", SqlDbType.UniqueIdentifier).Value = friendsId;
 
                 // Ausführen des SQLkommandos und Speichern des Ergebnis in den Dataadapter
                 using (SqlDataAdapter dataApdater = new SqlDataAdapter(sqlcmd))
@@ -85,12 +85,12 @@ namespace Hello.WCF.DataAccess
                     foreach (DataRow dr in userTable.Rows)
                     { 
                         // Bauen des Benutzerobjekts
-                        user.UserID = dr["UserId"] as Guid?;
-                        user.AliasName = dr["AliasName"] as string;
-                        user.AccountName = dr["AccountName"] as string;
-                        user.AccountState = dr["AccountState"] as string;
-                        user.Picture = dr["Picture"] as byte[];
-                        user.Password = dr["Password"] as byte[];
+                        user.userID = dr["userId"] as Guid?;
+                        user.aliasName = dr["aliasName"] as string;
+                        user.accountName = dr["accountName"] as string;
+                        user.accountState = dr["accountState"] as string;
+                        user.picture = dr["picture"] as byte[];
+                        user.password = dr["password"] as byte[];
                     }
 
                     // Rückgabe des Benutzerobjekts
@@ -120,7 +120,7 @@ namespace Hello.WCF.DataAccess
                 sqlcmd.CommandType = CommandType.StoredProcedure;
 
                 //SQL-Parameter zum SQLkommando hinzufügen
-                sqlcmd.Parameters.Add("@AccountName", SqlDbType.NVarChar, accountName.Length).Value = accountName;
+                sqlcmd.Parameters.Add("@accountName", SqlDbType.NVarChar, accountName.Length).Value = accountName;
 
                 // Ausführen des SQLkommandos und Speichern des Ergebnis in den Dataadapter
                 using (SqlDataAdapter dataApdater = new SqlDataAdapter(sqlcmd))
@@ -138,13 +138,13 @@ namespace Hello.WCF.DataAccess
                     foreach (DataRow dr in userTable.Rows)
                     {
                         // Bauen des Benutzerobjekts
-                        user.UserID = dr["UserId"] as Guid?;
-                        user.AliasName = dr["AliasName"] as string;
-                        user.AccountName = dr["AccountName"] as string;
-                        user.AccountState = dr["AccountState"] as string;
-                        user.Picture = dr["Picture"] as byte[];
-                        user.Password = dr["Password"] as byte[];
-                        user.ExpierencePoints = dr["ExpierencePoints"] as int?;
+                        user.userID = dr["userId"] as Guid?;
+                        user.aliasName = dr["aliasName"] as string;
+                        user.accountName = dr["accountName"] as string;
+                        user.accountState = dr["accountState"] as string;
+                        user.picture = dr["picture"] as byte[];
+                        user.password = dr["password"] as byte[];
+                        user.expierencePoints = dr["expierencePoints"] as int?;
                     }
 
                     // Rückgabe des Benutzerobjekts
@@ -174,13 +174,13 @@ namespace Hello.WCF.DataAccess
                 sqlcmd.CommandType = CommandType.StoredProcedure;
 
                 //SQL-Parameter zum SQLkommando hinzufügen
-                sqlcmd.Parameters.Add("@UserId", SqlDbType.UniqueIdentifier).Value = user.UserID;
-                sqlcmd.Parameters.Add("@Password", SqlDbType.Binary, user.Password.Length).Value = user.Password;
-                sqlcmd.Parameters.Add("@AccountName", SqlDbType.NVarChar, user.AccountName.Length).Value = user.AccountName;
-                sqlcmd.Parameters.Add("@AliasName", SqlDbType.NVarChar, user.AliasName.Length).Value = user.AliasName;
-                sqlcmd.Parameters.Add("@AccountState", SqlDbType.NVarChar, user.AccountName.Length).Value = user.AccountState;
-                sqlcmd.Parameters.Add("@Picture", SqlDbType.Binary, user.Picture.Length).Value = user.Picture;
-                sqlcmd.Parameters.Add("@ExpierencePionts", SqlDbType.Int).Value = user.ExpierencePoints;
+                sqlcmd.Parameters.Add("@userId", SqlDbType.UniqueIdentifier).Value = user.userID;
+                sqlcmd.Parameters.Add("@password", SqlDbType.Binary, user.password.Length).Value = user.password;
+                sqlcmd.Parameters.Add("@accountName", SqlDbType.NVarChar, user.accountName.Length).Value = user.accountName;
+                sqlcmd.Parameters.Add("@aliasName", SqlDbType.NVarChar, user.aliasName.Length).Value = user.aliasName;
+                sqlcmd.Parameters.Add("@accountState", SqlDbType.NVarChar, user.accountName.Length).Value = user.accountState;
+                sqlcmd.Parameters.Add("@picture", SqlDbType.Binary, user.picture.Length).Value = user.picture;
+                sqlcmd.Parameters.Add("@ExpierencePionts", SqlDbType.Int).Value = user.expierencePoints;
 
                 //Ausführen des SQLkommandos
                 sqlcmd.ExecuteScalar();
@@ -208,7 +208,7 @@ namespace Hello.WCF.DataAccess
                 sqlcmd.CommandType = CommandType.StoredProcedure;
 
                 //SQL-Parameter zum SQLkommando hinzufügen
-                sqlcmd.Parameters.Add("@AccountName", SqlDbType.NVarChar, user.AccountName.Length).Value = user.AccountName;
+                sqlcmd.Parameters.Add("@accountName", SqlDbType.NVarChar, user.accountName.Length).Value = user.accountName;
 
                 //Ausführen des SQLkommandos
                 sqlcmd.ExecuteScalar();

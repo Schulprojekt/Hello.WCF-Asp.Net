@@ -19,7 +19,7 @@ namespace Hello.WCF.BuisnessLogic
             using (SqlTransaction transaction = ConnectionManager.GetOpenConnection().BeginTransaction())
             {   
                 // Erstellen einer GUID
-                user.UserID = Guid.NewGuid();
+                user.userID = Guid.NewGuid();
                 //Zugriffssicht auf díe Datenbank deklarieren und instanzieren
                 UserDal userDal = new UserDal();
                 //Aufruf der Benutzererstellenmethode
@@ -110,7 +110,7 @@ namespace Hello.WCF.BuisnessLogic
                 //Zugriffssicht auf díe Datenbank deklarieren und instanzieren
                 UserDal userDal = new UserDal();
                 //Aufruf der Benutzerlöschenmethode
-                List<Relationship> friendlist = RelationshipManager.GetRelationships(user.UserID.Value);
+                List<Relationship> friendlist = RelationshipManager.GetRelationships(user.userID.Value);
                 foreach (Relationship friend in friendlist)
                 {
                     RelationshipManager.DeleteRelationship(friend);

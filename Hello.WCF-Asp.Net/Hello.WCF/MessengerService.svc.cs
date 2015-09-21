@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using Hello.WCF.Dataobjects;
 using Hello.WCF.BuisnessLogic;
-using System.ServiceModel.Web;
+using Newtonsoft.Json;
+using System.Runtime.Serialization.Json;
+using System.IO;
+using System.Text;
 
 namespace Hello.WCF
 {
@@ -16,9 +19,14 @@ namespace Hello.WCF
         /// <param name="message">
         /// Das Nachrichten-Objekt zur Übergabe an die Datenbank
         /// </param>
-        public void CreateMessage(Message message)
+        public void CreateMessage(String message)
         {
-            MessageManager.CreateMessage(message);
+            DataContractJsonSerializer json = new DataContractJsonSerializer(typeof(Message));
+            ASCIIEncoding ascciEndcoding = new ASCIIEncoding();
+            MemoryStream ms = new MemoryStream(ascciEndcoding.GetBytes(message));
+            Message messageToCreate = (Message)json.ReadObject(ms);
+            ms.Close();
+            MessageManager.CreateMessage(messageToCreate);
         }
 
         /// <summary>
@@ -27,9 +35,14 @@ namespace Hello.WCF
         /// <param name="relationship">
         /// Das Freunschaftsbeziehungsobjekt zur Übergabe an die Datenbank
         /// </param>
-        public void CreateRelationship(Relationship relationship)
+        public void CreateRelationship(String relationship)
         {
-            RelationshipManager.CreateRelationship(relationship);
+            DataContractJsonSerializer json = new DataContractJsonSerializer(typeof(Relationship));
+            ASCIIEncoding ascciEndcoding = new ASCIIEncoding();
+            MemoryStream ms = new MemoryStream(ascciEndcoding.GetBytes(relationship));
+            Relationship relationshipToCreate = (Relationship)json.ReadObject(ms);
+            ms.Close();
+            RelationshipManager.CreateRelationship(relationshipToCreate);
         }
 
         /// <summary>
@@ -38,9 +51,14 @@ namespace Hello.WCF
         /// <param name="user">
         /// Das User-Objekt zur Übergabe an die Datenbank
         /// </param>
-        public void CreateUser(User user)
+        public void CreateUser(String user)
         {
-            UserManager.CreateUser(user);
+            DataContractJsonSerializer json = new DataContractJsonSerializer(typeof(User));
+            ASCIIEncoding ascciEndcoding = new ASCIIEncoding();
+            MemoryStream ms = new MemoryStream(ascciEndcoding.GetBytes(user));
+            User userToCreate = (User)json.ReadObject(ms);
+            ms.Close();
+            UserManager.CreateUser(userToCreate);
         }
         #endregion
 
@@ -49,41 +67,41 @@ namespace Hello.WCF
         /// Gibt alle Freundschaftsbeziehungen des angelmeldeten Benutzers von der Datenbank wieder
         /// </summary>
         /// <param name="userId">
-        /// Die Id des angemeldten Benutzers
+        /// Die id des angemeldten Benutzers
         /// </param>
         /// <returns>
         /// Gibt eine Freundesliste wieder vom Typ Benutzer
         /// </returns>
-        public IList<User> GetRelationship(string userId)
+        public String GetRelationship(string userId)
         {
             List<Relationship> relationshipList = RelationshipManager.GetRelationships(new Guid(userId));
             List<User> friends = new List<User>();
             foreach (Relationship friendId in relationshipList)
             {
-                User friend = UserManager.GetUserByUserId(friendId.FriendsId);
+                User friend = UserManager.GetUserByUserId(friendId.friendsId);
                 friends.Add(friend);
             }
 
-            return friends;
+            return JsonConvert.SerializeObject(friends);
         }
 
         /// <summary>
         /// Holt die Nachrichten von der Datenbank für den angemeldten Benutzer
         /// </summary>
         /// <param name="userId">
-        /// Die Id des angemeldeten Benutzers
+        /// Die id des angemeldeten Benutzers
         /// </param>
         /// <returns>
         /// Eine Liste von Nachrichten
         /// </returns>
-        public IList<Message> GetMessages(string userId)
+        public string GetMessages(string userId)
         {
             List<Message> messageList = MessageManager.ReadMessage(new Guid(userId));
             foreach (Message msg in messageList)
             {
-                MessageManager.MessageReaded(msg.Id);
+                MessageManager.MessageReaded(msg.id);
             }
-            return messageList;
+            return JsonConvert.SerializeObject(messageList);
         }
 
         /// <summary>
@@ -95,10 +113,10 @@ namespace Hello.WCF
         /// <returns>
         /// Ein Benutzerobjekt vom Typ User
         /// </returns>
-        public User GetUserByAccountName(string accountName)
+        public String GetUserByAccountName(string accountName)
         {
-           User user = UserManager.GetUserByAccountName(accountName);
-           return user;
+            User user = UserManager.GetUserByAccountName(accountName);
+           return JsonConvert.SerializeObject(user);
         }
         #endregion
 
@@ -112,10 +130,15 @@ namespace Hello.WCF
         /// <returns>
         /// Gibt den geänderten Daten zurück
         /// </returns>
-        public User UpdateUser(User user)
+        public String UpdateUser(string user)
         {
-            User useredit = UserManager.UpdateUser(user);
-            return useredit;
+            DataContractJsonSerializer json = new DataContractJsonSerializer(typeof(User));
+            ASCIIEncoding ascciEndcoding = new ASCIIEncoding();
+            MemoryStream ms = new MemoryStream(ascciEndcoding.GetBytes(user));
+            User useredit = (User)json.ReadObject(ms);
+            ms.Close();
+            User usertoedit = UserManager.UpdateUser(useredit);
+            return JsonConvert.SerializeObject(usertoedit);
         }
         #endregion
 
@@ -126,9 +149,14 @@ namespace Hello.WCF
         /// <param name="relationship">
         /// Freunschaftsbeziehungsobjekt zwischen den 2 Benutzern
         /// </param>
-        public void DeleteRelationship(Relationship relationship)
+        public void DeleteRelationship(String relationship)
         {
-            RelationshipManager.DeleteRelationship(relationship);
+            DataContractJsonSerializer json = new DataContractJsonSerializer(typeof(Relationship));
+            ASCIIEncoding ascciEndcoding = new ASCIIEncoding();
+            MemoryStream ms = new MemoryStream(ascciEndcoding.GetBytes(relationship));
+            Relationship relationshipToDelete = (Relationship)json.ReadObject(ms);
+            ms.Close();
+            RelationshipManager.DeleteRelationship(relationshipToDelete);
         }
 
         /// <summary>
@@ -137,9 +165,14 @@ namespace Hello.WCF
         /// <param name="user">
         /// Benutzerobjekt des angemeldeten Benutzers
         /// </param>
-        public void DeleteUser(User user)
+        public void DeleteUser(string user)
         {
-            UserManager.DeleteUser(user);
+            DataContractJsonSerializer json = new DataContractJsonSerializer(typeof(User));
+            ASCIIEncoding ascciEndcoding = new ASCIIEncoding();
+            MemoryStream ms = new MemoryStream(ascciEndcoding.GetBytes(user));
+            User userToDelete = (User)json.ReadObject(ms);
+            ms.Close();
+            UserManager.DeleteUser(userToDelete);
         }
         #endregion
     }
