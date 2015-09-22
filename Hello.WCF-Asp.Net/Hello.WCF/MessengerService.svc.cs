@@ -17,7 +17,7 @@ namespace Hello.WCF
         /// Legt und Sendet die Nachrichten an die Datenbank an
         /// </summary>
         /// <param name="message">
-        /// Das Nachrichten-Objekt zur Übergabe an die Datenbank
+        /// Das Nachrichten-Objekt zur Übergabe an die Datenbank  
         /// </param>
         public void CreateMessage(String message)
         {
